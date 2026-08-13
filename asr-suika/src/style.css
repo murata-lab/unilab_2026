@@ -1,0 +1,240 @@
+@import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800&display=swap");
+
+:root {
+  font-family: "M PLUS Rounded 1c", system-ui, sans-serif;
+  color: #f7fbff;
+  background: #082d4a;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 50% -20%, #117db0 0%, transparent 54%),
+    linear-gradient(180deg, #073756 0%, #051d32 100%);
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  opacity: 0.2;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: linear-gradient(to bottom, black, transparent 75%);
+}
+
+main {
+  position: relative;
+  width: min(1448px, calc(100vw - 28px));
+  margin: 0 auto;
+  padding: 24px 0 30px;
+}
+
+.title-row {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 14px;
+}
+
+.eyebrow {
+  margin: 0 0 2px;
+  color: #6ee7ff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(25px, 4vw, 42px);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.commands,
+.fallback {
+  margin: 0;
+  color: #c8efff;
+  font-weight: 700;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.commands {
+  padding-bottom: 4px;
+  font-size: clamp(11px, 1.4vw, 16px);
+}
+
+#fullscreen-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.58);
+  border-radius: 9px;
+  color: #e8faff;
+  background: rgba(5, 74, 108, 0.82);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+#fullscreen-toggle:hover {
+  background: #087a97;
+}
+
+#game {
+  width: 100%;
+  overflow: hidden;
+  border: 3px solid rgba(218, 248, 255, 0.72);
+  border-radius: 20px;
+  background: #79d5ed;
+  box-shadow:
+    0 24px 70px rgba(0, 6, 18, 0.48),
+    0 0 0 7px rgba(74, 206, 237, 0.12);
+}
+
+#game canvas {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+}
+
+/* Phaser inserts its DOM input layer before the canvas, so lift it above the game. */
+#game > div {
+  z-index: 1;
+}
+
+.command-word-input {
+  width: 430px;
+  padding: 16px 22px;
+  border: 5px solid #28a8c2;
+  border-radius: 18px;
+  outline: none;
+  color: #063d5c;
+  background: #fffef1;
+  box-shadow: 0 10px 0 rgba(3, 50, 75, 0.22);
+  font: 800 38px/1.2 "M PLUS Rounded 1c", sans-serif;
+  text-align: center;
+}
+
+.command-word-input:focus {
+  border-color: #ffb33c;
+}
+
+.result-action-button {
+  width: 190px;
+  height: 64px;
+  padding: 0 12px;
+  border: 3px solid #79d5ed;
+  border-radius: 3px;
+  color: #ffffff;
+  background: #087a97;
+  font: 700 21px/1 "M PLUS Rounded 1c", sans-serif;
+  cursor: pointer;
+}
+
+.result-action-button:hover,
+.result-action-button:focus-visible {
+  outline: none;
+  background: #075d79;
+}
+
+.result-action-button:active,
+.result-action-button:disabled {
+  background: #054a63;
+}
+
+#game:fullscreen,
+#game:-webkit-full-screen {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  border: 0;
+  border-radius: 0;
+  background: #031b2c;
+}
+
+#game:fullscreen canvas,
+#game:-webkit-full-screen canvas {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: 100vw !important;
+  height: auto !important;
+  margin: 0 !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+@media (min-aspect-ratio: 4 / 3) {
+  #game:fullscreen canvas,
+  #game:-webkit-full-screen canvas {
+    width: auto !important;
+    height: 100vh !important;
+  }
+}
+
+.fallback {
+  padding: 12px 4px 0;
+  text-align: center;
+  font-size: 13px;
+}
+
+kbd {
+  display: inline-block;
+  min-width: 1.8em;
+  margin: 0 2px;
+  padding: 2px 6px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-bottom-width: 3px;
+  border-radius: 6px;
+  color: white;
+  background: rgba(255, 255, 255, 0.13);
+  font: inherit;
+  font-size: 11px;
+}
+
+@media (max-width: 700px) {
+  main {
+    width: min(100%, calc(100vw - 16px));
+    padding-top: 12px;
+  }
+
+  .title-row {
+    align-items: start;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .header-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  #game {
+    border-radius: 12px;
+  }
+
+  .fallback {
+    font-size: 11px;
+  }
+}

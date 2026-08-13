@@ -1,0 +1,14 @@
+[project]
+name = "asr-suika"
+version = "0.1.0"
+description = "Voice-controlled suikawari game with Phaser, FastAPI, and Vosk"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi>=0.116.1",
+    "pytest>=9.1.1",
+    "sounddevice>=0.5.5",
+    "uvicorn[standard]>=0.35.0",
+    # 0.3.45 has no Apple Silicon wheel. 0.3.42 includes a universal macOS wheel.
+    "vosk==0.3.42",
+]
