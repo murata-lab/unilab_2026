@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>電車ストップチャレンジ UI</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="stage" aria-label="電車ストップチャレンジ">
+      <aside class="hud hud-left" aria-label="進行度">
+        <div class="panel position-panel">
+          <div class="panel-header">
+            <span class="panel-label">進行度</span>
+          </div>
+          <div class="track" aria-hidden="true">
+            <div class="rail"></div>
+            <div class="target-zone"></div>
+            <div class="track-labels" aria-hidden="true">
+              <span class="track-label-over">1.8mオーバー</span>
+              <span class="track-label-target">停止位置</span>
+              <span class="track-label-before">4m手前</span>
+            </div>
+            <div class="train-marker" id="trainMarker">
+              <span class="train-window"></span>
+              <span class="train-light"></span>
+            </div>
+          </div>
+          <div class="progress-readouts">
+            <div class="readout readout-distance">
+              <span>停止位置まで</span>
+              <strong id="distanceLeft">未受信</strong>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <div class="camera-safe-area" aria-label="カメラ映像">
+        <video id="cameraFeed" autoplay playsinline muted></video>
+        <canvas id="poseCanvas"></canvas>
+        <div class="demo-camera-scene" aria-hidden="true">
+          <div class="demo-horizon"></div>
+          <div class="demo-rails"></div>
+        </div>
+        <div class="camera-status" id="cameraStatus">カメラ準備中...</div>
+      </div>
+
+      <aside class="hud hud-right" aria-label="運転席メーター">
+        <section class="panel cockpit-panel">
+          <div class="panel-header">
+            <span class="panel-label">運転席</span>
+          </div>
+          <div class="action-bubble is-decelerating" id="actionBubble" aria-live="polite">減速中!</div>
+          <div class="speed-gauge">
+            <span class="gauge-label">速度</span>
+            <div class="speed-dial">
+              <div class="speed-blocks" id="speedBlocks" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <strong><span id="speedValue">0.0</span><small>m/s</small></strong>
+            </div>
+          </div>
+          <div class="elapsed-time">
+            <span>経過時間</span>
+            <strong id="elapsedTime">00:00</strong>
+          </div>
+        </section>
+      </aside>
+
+      <section class="score-overlay" id="scoreOverlay" aria-live="polite" hidden>
+        <div class="score-result">
+          <span class="score-title">SCORE</span>
+          <strong id="scoreValue">0</strong>
+          <span class="score-unit">/ 100</span>
+        </div>
+        <div class="score-details">
+          <span>停止誤差 <strong id="scoreDistance">-- m</strong></span>
+          <span>経過時間 <strong id="scoreElapsed">-- s</strong></span>
+        </div>
+      </section>
+    </main>
+
+    <script defer src="./script.js"></script>
+  </body>
+</html>
