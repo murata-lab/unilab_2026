@@ -1,0 +1,38 @@
+.DS_Store
+
+# SAM2 checkpoint files (large model files)
+sam2/checkpoints/*.pt*
+
+# Large image files
+games/Background.png
+
+# Local segmentation diagnostics
+segmentation_debug/
+
+# Python cache files
+__pycache__/
+.venv/
+.venv*/
+.venv_macos/
+.venv_macos313/
+.venv_local/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg-info/
+.pytest_cache/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+Thumbs.db
+
+# Local camera diagnostics
+camera_check_output/
